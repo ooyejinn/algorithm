@@ -4,7 +4,7 @@ def bfs(sr, sc):
     Q = deque()
     visited = [[0]*N for _ in range(N)]
     short_lst = []
-    min_dist = float('inf')  # 최단 거리 초기화
+    min_dist = float('inf')
 
     Q.append((sr, sc))
     visited[sr][sc] = 1
@@ -51,6 +51,10 @@ while True:
         print(cnt)
         break
     # 먹을 물고기 있는 경우
+    # 복잡하게 BFS를 다시 적용할 필요 없이, 위에서 적용한 BFS에서 필요한 데이터만을 빼와서 바로 활용할 수 있다.
+    # 필수 데이터
+    #     1. 갈 수 있고 가장 가까운 것 중 / 가장 위에 있고 / 가장 왼쪽에 있는 것의 위치 (상어 위치 이동)
+    #     2. 그곳까지 가는 데에 든 비용(dist)
     short_lst.sort(key=lambda x: (x[0], x[1]))  # 행 우선으로 정렬
     cr, cc = short_lst[0]
     arr[cr][cc] = 0
