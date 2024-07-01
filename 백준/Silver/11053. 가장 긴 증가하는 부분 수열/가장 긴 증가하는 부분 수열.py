@@ -1,3 +1,6 @@
+# PyPy3     144ms   31120KB
+# Python3   104ms   109240KB
+
 N = int(input())
 arr = list(map(int, input().split()))
 
