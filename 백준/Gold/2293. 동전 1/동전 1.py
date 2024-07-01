@@ -1,9 +1,9 @@
+# N가지, K원 만들기
 N, K = map(int, input().split())
 
 coins = [int(input()) for _ in range(N)]
 # coins.sort()
 
-# DP[i] = i원을 만드는 방법의 수
 DP = [0] * (K+1)
 DP[0] = 1
 
