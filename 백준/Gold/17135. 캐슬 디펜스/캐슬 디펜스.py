@@ -1,25 +1,3 @@
-'''
-from itertools import combinations, permutations
-
-nums = [1,2,3,4]
-
-permutations: 순열 (순서 상관 O)
-perm = list(permutations(nums, 2))
-[(1, 2), (1, 3), (1, 4), (2, 1), (2, 3), (2, 4), (3, 1), (3, 2), (3, 4), (4, 1), (4, 2), (4, 3)]
-
-combinations: 조합 (순서 상관 X)
-comb = list(combinations(nums, 2))
-[(1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
-
-1-1. 궁수는 각각 동시에 적 하나를 공격
-1-2. 거리가 D 이하인 적 중 가장 가까운 적을 공격
-1-3. 그런 적이 다수일 경우 가장 왼쪽의 적을 공격
-1-4. 한 적이 여러 궁수에가 공격당할 수 있음
-1-5. 공격당한 적은 사망
-1-6. 궁수 턴 끝난 뒤 적은 한 칸 아래로 이동
-1-7. 모든 적이 격자에서 제외되면 게임이 끝남
-1-8. 죽인 적을 return
-'''
 from copy import deepcopy
 from itertools import combinations
 
