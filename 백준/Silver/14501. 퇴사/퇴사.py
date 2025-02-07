@@ -1,26 +1,21 @@
 N = int(input())
-table = [[]for _ in range(N+1)]
+T = [0]*N
+P = [0]*N
+DP = [0]*(N+1)
 
-for idx in range(1, N+1):
-    time, pay = map(int, input().split())
-    table[idx] = time, pay
+for i in range(N):
+    T[i], P[i] = map(int, input().split())
 
-# 최대수익 DP로 계속 저장해갈 공간
-DP = [0]*(N+2)
-
-for date in range(N, 0, -1):
-    ctime, cpay = table[date][0], table[date][1]
-    # 만약 날짜 초과면 ㄴㄴ
-    endday = date + ctime
-
-    if endday > N+1:
+# N-1부터 0까지
+for date in range(N-1, -1, -1):
+    # 그날의 상담을 했을 때 퇴사일을 넘기는 경우: 상담불가
+    # -> 다음날 값 그대로 가져오기
+    if date + T[date] > N:
         DP[date] = DP[date+1]
-
-    # 아닐경우,,, max값 계속 비교해서... 흠,.,,,,,
     else:
-        #             하는 경우            안 하고 다음날로 넘어간 경우
-        DP[date] = max(cpay + DP[endday], DP[date + 1])
+        # 상담 안하고 넘기는 경우: 현재 상담 금액을 그대로 다음 날로 넘김
+        # 상담 하는 경우 : 현재 상담 금액 + 상담 후 받을 수 있는 최대 이익
+        DP[date] = max(DP[date+1], P[date]+DP[date+T[date]])
 
-# [0, 45, 45, 45, 35, 15, 0, 0, 0]
-# print(DP)
-print(DP[1])
+# print(DP) = [45, 45, 45, 35, 15, 0, 0, 0]
+print(DP[0])
