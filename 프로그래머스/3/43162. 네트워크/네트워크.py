@@ -1,16 +1,26 @@
+from collections import deque
+
 def solution(n, computers):
-    visited = [0] * n
     answer = 0
+    visited = [0]*n
     
-    def dfs(i):
-        visited[i] = 1
-        for j in range(n):
-            if computers[i][j] == 1 and visited[j] == 0:
-                dfs(j)
+    def bfs(c):
+        Q = deque()
+        Q.append(c)
+        
+        while Q:
+            now = Q.popleft()
+            for i in range(n):
+                if computers[now][i] == 1 and visited[i] == 0:
+                    visited[i] = 1
+                    Q.append(i)
+        
+        return
     
     for i in range(n):
         if visited[i] == 0:
-            dfs(i)
             answer += 1
+            visited[i] = 1
+            bfs(i)
     
     return answer
