@@ -8,16 +8,16 @@ def solution(n, wires):
         arr[w1].append(w2)
         arr[w2].append(w1)
         
-    def bfs(s, cut1, cut2):
+    def bfs(wire1, wire2):
         Q = deque()
-        Q.append(s)
-        visited = set([s])
+        Q.append(wire1)
+        visited = set([wire1])
         
         while Q:
             c = Q.popleft()
             
             for next in arr[c]:
-                if (cut1 == c and cut2 == next) or (cut2 == c and cut1 == next):
+                if (wire1 == c and wire2 == next) or (wire2 == c and wire1 == next):
                     continue
                 
                 if next not in visited:
@@ -27,7 +27,7 @@ def solution(n, wires):
         return len(visited)
         
     for w1, w2 in wires:
-        cnt_subtree = bfs(w1, w1, w2)
+        cnt_subtree = bfs(w1, w2)
         dif = abs(cnt_subtree - (n - cnt_subtree))
         answer = min(dif, answer)
     
