@@ -1,9 +1,11 @@
 from collections import deque
 
 def solution(begin, target, words):
-    # 문제 조건에서 begin != target 은 이미 명시되어 있음
     if target not in words:
         return 0
+    
+    N = len(words)
+    visited = [0 for _ in range(N)]
     
     def is_connected(A, B):
         distance = 0
@@ -11,24 +13,23 @@ def solution(begin, target, words):
         for a, b in zip(A, B):
             if a != b:
                 distance += 1
-        
+            
             if distance > 1:
                 return False
         
         return distance == 1
-    
-    Q = deque([(begin, 0)])
-    visited = [0] * len(words)
+        
+    Q = deque()
+    Q.append((begin, 0))
     
     while Q:
-        c_word, cnt = Q.popleft()
+        cur_word, cur_cnt = Q.popleft()
+        if cur_word == target:
+            return cur_cnt
         
-        if c_word == target:
-            return cnt
-        
-        for i in range(len(words)):
-            if visited[i] == 0 and is_connected(c_word, words[i]):
+        for i in range(N):
+            if visited[i] == 0 and is_connected(cur_word, words[i]):
                 visited[i] = 1
-                Q.append((words[i], cnt+1))
+                Q.append((words[i], cur_cnt+1))
     
     return 0
