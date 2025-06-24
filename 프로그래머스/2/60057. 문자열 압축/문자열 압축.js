@@ -7,7 +7,7 @@ function solution(s) {
         let prev_str = s.slice(0, unit_num);
         let cnt = 1;
         
-        for (i = unit_num; i <= n; i += unit_num) {
+        for (i = unit_num; i <= n; i+= unit_num) {
             let now_str = s.slice(i, i+unit_num);
             
             if (now_str === prev_str) {
@@ -19,10 +19,11 @@ function solution(s) {
             }
         }
         
-        result += (cnt > 1 ? String(cnt)  : "") + prev_str;
-        
+        result += (cnt > 1 ? String(cnt) : "") + prev_str;
         answer = Math.min(answer, result.length);
     }
+    
+    
     
     return answer;
 }
