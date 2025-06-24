@@ -4,23 +4,23 @@ function solution(record) {
     
     for (let i = 0; i < record.length; i++) {
         const parts = record[i].split(" ");
-        const cmd = parts[0];
+        const active = parts[0];
         const uid = parts[1];
         
-        if (cmd === "Enter" || cmd === "Change") {
+        if (active === "Enter" || active === "Change") {
             user_nick[uid] = parts[2];
         }
     }
     
     for (let i = 0; i < record.length; i++) {
         const parts = record[i].split(" ");
-        const cmd = parts[0];
+        const active = parts[0];
         const uid = parts[1];
         
-        if (cmd === "Enter") {
-            answer.push(`${user_nick[uid]}님이 들어왔습니다.`);
-        } else if (cmd === "Leave") {
-            answer.push(`${user_nick[uid]}님이 나갔습니다.`);
+        if (active === "Enter") {
+            answer.push(`${user_nick[uid]}님이 들어왔습니다.`)
+        } else if (active === "Leave") {
+            answer.push(`${user_nick[uid]}님이 나갔습니다.`)
         }
     }
     
