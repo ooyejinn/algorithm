@@ -1,7 +1,6 @@
+import math
+
 def solution(progresses, speeds):
-    # (100 - progress) // speed 만큼 걸림
-    # 날짜도 카운트 해야됨
-    # 그 뒤 그걸 어딘가에 담고 (며칠 뒤에 되는지 +i + 저 위의 day 만큼 더해서)
     
     n = len(speeds)
     successes = []
@@ -10,7 +9,7 @@ def solution(progresses, speeds):
         progress = progresses[i]
         speed = speeds[i]
         
-        day = (100 - progress + speed - 1) // speed
+        day = math.ceil((100 - progress) / speed)
         successes.append(day)
         
     answer = []
