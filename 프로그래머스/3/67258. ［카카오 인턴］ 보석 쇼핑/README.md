@@ -1,10 +1,10 @@
 # [level 3] [카카오 인턴] 보석 쇼핑 - 67258 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/67258?language=python3) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/67258?language=javascript) 
 
 ### 성능 요약
 
-메모리: 16.9 MB, 시간: 52.17 ms
+메모리: 38.5 MB, 시간: 37.36 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 08월 03일 21:44:03
+2025년 08월 03일 21:54:18
 
 ### 문제 설명
 
