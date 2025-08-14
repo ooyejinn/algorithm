@@ -14,7 +14,7 @@ for _ in range(N):
     P, L, G = map(int, input().split())
     LP_graph[L].add(P)
     GLP_graph[G][L].add(P)
-    P_graph[P] = [L, G]
+    P_graph[P] = (L, G)
 
 M = int(input())
 
@@ -25,13 +25,13 @@ for _ in range(M):
         P, L, G = int(act[1]), int(act[2]), int(act[3])
         LP_graph[L].add(P)
         GLP_graph[G][L].add(P)
-        P_graph[P] = [L, G]
+        P_graph[P] = (L, G)
 
     elif act[0] == "solved":
         P = int(act[1])
 
         if P in P_graph:
-            L, G = P_graph[P][0], P_graph[P][1]
+            L, G = P_graph[P]
             LP_graph[L].discard(P)
             GLP_graph[G][L].discard(P)
             del P_graph[P]
