@@ -97,6 +97,9 @@ for _ in range(M):
         L = problem_l.pop(P, None)
         G = problem_g.pop(P, None)
 
+        # discard():
+        # set 메서드, 특정 원소가 있을 시 삭제, 없을 시 무시
+        # 반환값: None
         if L is not None:
             levels[L].discard(P)
         if G is not None:
