@@ -1,28 +1,30 @@
 from collections import defaultdict
 
 def solution(genres, plays):
-    genre_total = defaultdict(int)
+    N = len(plays)
+    genres_cnt = defaultdict(int)
     
-    for genre, play in zip(genres, plays):
-        genre_total[genre] += play
+    for i in range(N):
+        genre = genres[i]
+        play = plays[i]
+        genres_cnt[genre] += play
         
-    songs = []
+    song_info = []
     
-    # 다시 순회하며, idx 붙여서 하나씩 봄...
-    # 해당 장르 토탈 재생 수, (이후 sort 시 python은 오름차순이니 - 붙임)
-    # 해당 곡 재생 수, (이후 sort 시 python은 오름차순이니 - 붙임)
-    for idx, (genre, play) in enumerate(zip(genres, plays)):
-        songs.append((-genre_total[genre], -play, idx, genre))
+    for i in range(N):
+        genre = genres[i]
+        play = plays[i]
         
-    songs.sort()
+        song_info.append([-genres_cnt[genre], -play, i, genre])
+        
+    song_info.sort()
     
-    # 이건 장르별 뽑은 곡 개수
-    picked = defaultdict(int)
+    genre_picked = defaultdict(int)
     answer = []
     
-    for _, _, idx, genre in songs:
-        if picked[genre] < 2:
-            answer.append(idx)
-            picked[genre] += 1
-    
+    for _, _, i, genre in song_info:
+        if genre_picked[genre] < 2:
+            answer.append(i)
+            genre_picked[genre] += 1
+            
     return answer
